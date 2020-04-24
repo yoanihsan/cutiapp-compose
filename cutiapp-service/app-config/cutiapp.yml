@@ -1,0 +1,43 @@
+# server configuration
+server:
+   port: 8081
+
+# spring configuration
+spring:
+   application:
+      name: cutiapp
+
+   datasource:
+      url: jdbc:postgresql://localhost:5432/cutiapp
+      username: cutiappdev
+      password: cuti123dev
+      initialization-mode: always
+      validation-query: SELECT 1
+
+      hikari:
+         connection-test-query: SELECT 1
+         connection-timeout: 50000
+         minimum-idle: 5
+         maximum-pool-size: 50
+         idle-timeout: 300000
+         max-lifetime: 120000
+         auto-commit: true
+
+   jpa:
+      database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+      hibernate:
+         ddl-auto: update
+         use-new-id-generator-mappings: false
+     
+      properties: 
+         hibernate:
+            generate_statistics: false
+            temp: 
+               use_jdbc_metadata_defaults: false
+            id:
+               new_generator_mappings: false
+            format_sql: true
+            show_sql: true
+            use_sql_comments: false
+            type: trace
+            enable_lazy_load_no_trans: true
